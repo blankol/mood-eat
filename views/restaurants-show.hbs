@@ -8,7 +8,6 @@
   <h4>Website:</h4>
   <p>{{restaurant.yelpUrl}}</p>
 </div>
-
 <div class="restaurants-input">
   <h2>Update Restaurant Info.</h2>
   <form action="/restaurants/{{restaurant.mood}}?_method=put" method="post">
@@ -29,3 +28,19 @@
 {{else}}
 <h2>Bummer! <br> Nothing Here!</h2>
 {{/if}}
+
+<div class="restaurants-input">
+    <h3>Add Restaurant</h3>
+      <form name='restaurants/' action="/restaurants" method="post">
+        <input type="text" name="restaurant[name]" value="name of restaurant"><br>
+        <input type="text" name="restaurant[location]" value="restaurant location"><br>
+        <input type="text" name="restaurant[mood]" value="{{restaurant.mood}}" style="display:none">
+        <input type="text" name="restaurant[address][street]" value="paper street" style="display:none">
+        <input type="text" name="restaurant[address][zipcode]" value="8675309" style="display:none">
+        <textarea cols="40" rows="15" name="restaurant[url]">
+          Website
+        </textarea>
+     <br>
+    <input type="submit" name="" value="add restaurant">
+  </form>
+</div>
