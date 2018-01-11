@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
 
 body {
-    text-align: center;   
+    text-align: center;
     font-family: 'Roboto', sans-serif;
     font-weight: bolder;           
 }
@@ -72,6 +72,7 @@ body {
 /* Dropdown nav bar HTML/CSS source: https://www.w3schools.com/howto/howto_css_dropdown.asp */
 
 .dropbtn {
+    text-align: left;
     background-color: black;
     color: white;
     padding: 16px;

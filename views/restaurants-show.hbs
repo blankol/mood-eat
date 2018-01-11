@@ -14,8 +14,8 @@
       <h4>Update Restaurant</h4>
       <form name="update" action="/restaurants/{{this._id}}?_method=put" method="post">
           <input type="text"  name="restaurant[name]" placeholder="{{this.name}}"><br>
-          <input type="text"  name="restaurant[location]" value="{{this.location}}"><br>
-          <input type="text"  name="restaurant[url]" value="{{this.url}}"><br>
+          <input type="text"  name="restaurant[address]" placeholder="{{this.address.street}} {{this.address.zipcode}}"><br>
+          <input type="text"  name="restaurant[url]" placeholder="{{this.url}}"><br>
           <input type="submit" class="button" value="Edit">
       </form>
       <form name="delete" action="/restaurants/{{this._id}}?_method=delete" method="post">
@@ -31,11 +31,11 @@
 
 <div class="restaurants-input">
       <form name='add' action="/restaurants/" method="post">
-        <input type="text" name="restaurant[name]" value="Restaurant Name"><br>
-        <input type="text" name="restaurant[location]" value="Location"><br>
-        <input type="text" name="restaurant[address][street]" value="paper street" style="display:none">
-        <input type="text" name="restaurant[address][zipcode]" value="8675309" style="display:none">
-        <input type="text" name="restaurant[url]"><br>
+        <input type="text" name="restaurant[name]" placeholder="Restaurant Name"><br>
+        <input type="text" name="restaurant[location]" placeholder="Location"><br>
+        <input type="text" name="restaurant[address.street]" value="paper street" style="display:none">
+        <input type="text" name="restaurant[address.zipcode]" value="8675309" style="display:none">
+        <input type="text" name="restaurant[url]" placeholder="Website"><br>
         <input type="submit" class="button" name="" value="Add Restaurant">
   
     <div class="invisible">
