@@ -1,32 +1,35 @@
-{{#if restaurant}}
+{{#if restaurants}}
 
 
-<div class="restaurants">
-  <h3>{{restaurant.name}}</h3>
-  <h4>Location:</h4>
-  <p> {{restaurant.address.street}} {{restaurant.address.zipcode}}</p>
-  <h4>Website:</h4>
-  <p>{{restaurant.yelpUrl}}</p>
+<div class="restaurants"
+  {{#each restaurants}}
+    <h3>{{this.name}}</h3>
+    <h4>Location:</h4>
+    <p> {{this.address.street}} {{this.address.zipcode}}</p>
+    <h4>Website:</h4>
+    <p>{{this.yelpUrl}}</p>
+
+    <div class="restaurants-input">
+      <h4>Update Restaurant</h4>
+      <form name="update" action="/restaurants/{{this._id}}?_method=put" method="post">
+          <input type="text" size="50" name="restaurant[name]" placeholder="{{this.name}}"><br>
+          <input type="text" size="50" name="restaurant[location]" value="{{this.location}}"><br>
+          <input type="text" size="50" name="restaurant[url]" value="{{this.url}}"><br>
+          <input type="submit" class="button" value="Edit">
+      </form>
+      <form name="delete" action="/restaurants/{{this._id}}?_method=delete" method="post">
+          <input type="submit" class="button" value="Delete">
+      </form>
+    </div>
+  {{/each}}
 </div>
-<div class="restaurants-input">
-  <h4>Update Restaurant</h4>
-  <form action="/restaurants/{{restaurant.mood}}?_method=put" method="post">
-      <input type="text" size="50" name="restaurant[name]" placeholder="{{restaurant.name}}"><br>
-      <input type="text" size="50" name="restaurant[location]" value="{{restaurant.location}}"><br>
-      <input type="text" size="50" name="restaurant[url]" value="{{restaurant.url}}"><br>
-      <input type="submit" class="button" value="Edit">
-      <form action="/restaurants/{{restaurant.mood}}?_method=delete" method="post">
-    <input type="submit" class="button" value="Delete">
-  </form>
-
  
 {{else}}
 <h2>Bummer! <br> Nothing Here!</h2>
 {{/if}}
 
 <div class="restaurants-input">
-    <h4>Add Restaurant</h4>
-      <form name='restaurants/' action="/restaurants" method="post">
+      <form name='restaurants' action="/restaurants" method="post">
         <input type="text" size="50" name="restaurant[name]" value="Restaurant Name"><br>
         <input type="text" size="50" name="restaurant[location]" value="Location"><br>
         <input type="text" size="50" name="restaurant[address][street]" value="paper street" style="display:none">
@@ -39,5 +42,4 @@
     </div>
   </form>
 </div>
-
 

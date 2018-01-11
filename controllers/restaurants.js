@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 const express  = require('express')
 const Restaurant = require('../db/schema')
@@ -15,27 +16,13 @@ router.get('/', (req, res) => {
   })
 })
 
-// get main page
-// router.get('/', (req, res) => {
-//    Restaurant.find({})
-//    .then((restaurant) => {
-//        // show all
-//        res.render('restaurants-index', {
-//            restaurants: restaurant
-//        })
-//    })
-//    .catch((err) => {
-//        console.log(err)
-//    })
-// })
- 
 
  // get one by name:
  router.get('/:mood', (req, res) => {
-     Restaurant.findOne({mood: req.params.mood})
-     .then((restaurant) => {
+     Restaurant.find({mood: req.params.mood})
+     .then((restaurants) => {
          res.render('restaurants-show', {
-             restaurant: restaurant
+             restaurants: restaurants
            })
        })
        .catch((err) => {
@@ -44,10 +31,10 @@ router.get('/', (req, res) => {
    })
    
    // update restaurants:
-   router.put('/:mood', (req, res) => {
-       Restaurant.findOneAndUpdate({mood: req.params.mood}, req.body.restaurant, {new: true})
+   router.put('/:id', (req, res) => {
+       Restaurant.findOneAndUpdate({_id: req.params.id}, req.body.restaurant, {new: true})
        .then(restaurant => {
-           res.redirect(`/restaurants/${req.params.mood}`)
+           res.redirect(`/restaurants/${restaurant.mood}`)
        })
        .catch((err) => {
            console.log(err)
@@ -56,10 +43,10 @@ router.get('/', (req, res) => {
 
    // Post new restaurants:
    router.post('/', (req, res) => {
-       console.log('pre-post')
-       console.log(req.body.restaurant)
+       console.log('create restaurant')
        Restaurant.create(req.body.restaurant)
        .then((restaurant) => {
+           console.log(restaurant)
           res.redirect(`/restaurants/${restaurant.mood}`)
        })
        .catch((err) => {
@@ -70,10 +57,10 @@ router.get('/', (req, res) => {
      
  
    // delete res ** 
-   router.delete('/:mood', (req, res) => {
-       Restaurant.findOneAndRemove({mood: req.params.mood})
+   router.delete('/:id', (req, res) => {
+       Restaurant.remove({_id: req.params.id})
        .then(() => {
-           res.redirect(`/restaurants/${req.params.mood}`)
+           res.redirect(`/`)
        })
    })
    
