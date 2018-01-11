@@ -4,7 +4,7 @@
   "description": "A restaurant app where the user can browse recommended places based on tongue-in-cheek mood/themes.i",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

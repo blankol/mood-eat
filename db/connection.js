@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
-const seedData = require('./seeds.json')
-mongoose.Promise = Promise
+ const mongoose = require('mongoose')
+ const seedData = require('./seeds.json')
+ const db = require('../config/database')
+ mongoose.Promise = Promise
 
-mongoose.connect('mongodb://localhost/mood-eat', { useMongoClient: true })
+ mongoose.connect(db.mongoURI, { useMongoClient: true })
 
-module.exports = mongoose
+ module.exports = mongoose
