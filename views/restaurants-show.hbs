@@ -11,7 +11,6 @@
     <p>{{this.url}}</p>
 
     <div class="restaurants-input">
-      <h4>Update Restaurant</h4>
       <form name="update" action="/restaurants/{{this._id}}?_method=put" method="post">
           <input type="text"  name="restaurant[name]" value="{{this.name}}"><br>
           <input type="text"  name="restaurant[address][street]" value="{{this.address.street}}"><br>
