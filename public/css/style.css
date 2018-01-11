@@ -1,9 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed');
+
+
 
 body {
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     font-weight: bolder;           
+}
+
+h1 {
+    font-size: 60px;
 }
 
 /* CSS font color change source by Rasi Zakaria https://codepen.io/raaasin/pen/quvHr */
