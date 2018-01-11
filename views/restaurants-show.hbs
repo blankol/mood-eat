@@ -2,7 +2,8 @@
 
 
 <div class="restaurants"
-  {{#each restaurants}}
+  {{!-- {{#each restaurants}} --}}
+  {{#each restaurants as |restaurant|}}
     <h3>{{this.name}}</h3>
     <h4>Location:</h4>
     <p> {{this.address.street}} {{this.address.zipcode}}</p>
@@ -29,17 +30,17 @@
 {{/if}}
 
 <div class="restaurants-input">
-      <form name='add' action="/restaurants/{{this._id}}?_method=post" method="post">
+      <form name='add' action="/restaurants/" method="post">
         <input type="text" name="restaurant[name]" value="Restaurant Name"><br>
         <input type="text" name="restaurant[location]" value="Location"><br>
         <input type="text" name="restaurant[address][street]" value="paper street" style="display:none">
         <input type="text" name="restaurant[address][zipcode]" value="8675309" style="display:none">
         <input type="text" name="restaurant[url]"><br>
-        <input type="submit" class="button"   size="50" name="" value="Add Restaurant">
-   {{!-- mood display:none added to keep page static --}}
+        <input type="submit" class="button" name="" value="Add Restaurant">
+  
     <div class="invisible">
         <input type="text" name="restaurant[mood]" value="{{restaurant.mood}}" style="display:none">
     </div>
   </form>
-</div>
+</div> 
 
