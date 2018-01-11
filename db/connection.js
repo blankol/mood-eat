@@ -3,6 +3,7 @@
  const db = require('../config/database')
  mongoose.Promise = Promise
 
+ console.log(db.mongoURI)
  mongoose.connect(db.mongoURI, { useMongoClient: true })
 
  module.exports = mongoose
