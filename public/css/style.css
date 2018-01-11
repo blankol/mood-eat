@@ -111,4 +111,26 @@ body {
     background-color: black;
 }
 
+/* css buttons design https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_basic */
+.button {
+  background-color: #B22222;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
+input[type=text], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

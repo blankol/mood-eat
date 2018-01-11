@@ -9,38 +9,35 @@
   <p>{{restaurant.yelpUrl}}</p>
 </div>
 <div class="restaurants-input">
-  <h2>Update Restaurant Info.</h2>
+  <h4>Update Restaurant</h4>
   <form action="/restaurants/{{restaurant.mood}}?_method=put" method="post">
-      <input type="text" name="restaurant[name]" placeholder="{{restaurant.name}}"><br>
-      <input type="text" name="restaurant[location]" value="{{restaurant.location}}"><br>
-      <textarea cols="40" rows="5" name="restaurant[url]" >
-        {{restaurant.url}}
-      </textarea>
-      <input type="submit" value="update">
+      <input type="text" size="50" name="restaurant[name]" placeholder="{{restaurant.name}}"><br>
+      <input type="text" size="50" name="restaurant[location]" value="{{restaurant.location}}"><br>
+      <input type="text" size="50" name="restaurant[url]" value="{{restaurant.url}}"><br>
+      <input type="submit" class="button" value="Edit">
+      <form action="/restaurants/{{restaurant.mood}}?_method=delete" method="post">
+    <input type="submit" class="button" value="Delete">
   </form>
 
-  <h3>Delete Restaurant</h3>
-  <form action="/restaurants/{{restaurant.mood}}?_method=delete" method="post">
-    <input type="submit" value="delete">
-  </form>
-</div>
-
+ 
 {{else}}
 <h2>Bummer! <br> Nothing Here!</h2>
 {{/if}}
 
 <div class="restaurants-input">
-    <h3>Add Restaurant</h3>
+    <h4>Add Restaurant</h4>
       <form name='restaurants/' action="/restaurants" method="post">
-        <input type="text" name="restaurant[name]" value="name of restaurant"><br>
-        <input type="text" name="restaurant[location]" value="restaurant location"><br>
+        <input type="text" size="50" name="restaurant[name]" value="Restaurant Name"><br>
+        <input type="text" size="50" name="restaurant[location]" value="Location"><br>
+        <input type="text" size="50" name="restaurant[address][street]" value="paper street" style="display:none">
+        <input type="text" size="50" name="restaurant[address][zipcode]" value="8675309" style="display:none">
+        <input type="text" size="50" name="restaurant[url]"><br>
+        <input type="submit" class="button"   size="50" name="" value="Add Restaurant">
+   {{!-- mood display:none added to keep page static --}}
+    <div class="invisible">
         <input type="text" name="restaurant[mood]" value="{{restaurant.mood}}" style="display:none">
-        <input type="text" name="restaurant[address][street]" value="paper street" style="display:none">
-        <input type="text" name="restaurant[address][zipcode]" value="8675309" style="display:none">
-        <textarea cols="40" rows="15" name="restaurant[url]">
-          Website
-        </textarea>
-     <br>
-    <input type="submit" name="" value="add restaurant">
+    </div>
   </form>
 </div>
+
+
