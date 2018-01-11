@@ -15,9 +15,6 @@
       <form name="update" action="/restaurants/{{this._id}}?_method=put" method="post">
           <input type="text"  name="restaurant[name]" value="{{this.name}}"><br>
           <input type="text"  name="restaurant[address][street]" value="{{this.address.street}}"><br>
-  
-          {{!-- <input type="text"  name="restaurant[address][street]" placeholder="{{restaurant.address.street}}"><br>
-          <input type="text"  name="restaurant[address][zipcode]" placeholder="{{restaurant.address.zipcode}}"><br> --}}
           <input type="text"  name="restaurant[url]" value="{{this.url}}"><br>
           <input type="submit" class="button" value="Edit">
       </form>
@@ -33,7 +30,7 @@
 {{/if}}
 
 <div class="restaurants-input">
-      <form name='add' action="/restaurants/" method="post">
+      <form name='add' action="/restaurants/{{mood}}" method="post">
         <input type="text" name="restaurant[name]" placeholder="Restaurant Name"><br>
         <input type="text" name="restaurant[location]" placeholder="Location"><br>
         <input type="text" name="restaurant[address.street]" value="paper street" style="display:none">

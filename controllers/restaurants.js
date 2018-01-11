@@ -22,7 +22,9 @@ router.get('/', (req, res) => {
      Restaurant.find({mood: req.params.mood})
      .then((restaurants) => {
          res.render('restaurants-show', {
-             restaurants: restaurants
+             restaurants: restaurants,
+             // access mood from views
+             mood: req.params.mood
            })
        })
        .catch((err) => {
@@ -42,8 +44,10 @@ router.get('/', (req, res) => {
    })
 
    // Post new restaurants:
-   router.post('/', (req, res) => {
+   router.post('/:mood', (req, res) => {
        console.log('create restaurant')
+       // updating body before its saved to db
+       req.body.restaurant.mood = req.params.mood
        Restaurant.create(req.body.restaurant)
        .then((restaurant) => {
            console.log(restaurant)
@@ -58,10 +62,16 @@ router.get('/', (req, res) => {
  
    // delete res ** 
    router.delete('/:id', (req, res) => {
-       Restaurant.remove({_id: req.params.id})
-       .then(() => {
-           res.redirect(`/`)
-       })
+
+        Restaurant.find({_id: req.params.id})
+        .then( restaurant => {
+            console.log('restaurant mood' + restaurant)
+            var mood = restaurant.mood
+            Restaurant.remove({_id: req.params.id})
+            .then(_ => {
+                res.redirect(`/restaurants/${mood}`)
+            })
+       })  
    })
    
    
