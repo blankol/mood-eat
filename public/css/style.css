@@ -12,6 +12,10 @@ h1 {
     font-size: 60px;
 }
 
+.dropbtn {
+    margin-bottom: 15px;
+}
+
 /* CSS font color change source by Rasi Zakaria https://codepen.io/raaasin/pen/quvHr */
 .eats {
     color:#313131;
