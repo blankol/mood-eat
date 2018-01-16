@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const express  = require('express')
 const Restaurant = require('../db/schema')
 
-
+// crud references from GA 'when presidents' lab
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -60,15 +60,15 @@ router.get('/', (req, res) => {
 
      
  
-   // delete res ** 
+   // delete restaurants
    router.delete('/:id', (req, res) => {
-
         Restaurant.find({_id: req.params.id})
         .then( restaurant => {
             console.log('restaurant mood' + restaurant)
-            var mood = restaurant.mood
+            let mood = restaurant.mood
+            console.log('the mood=>'+restaurant)
             Restaurant.remove({_id: req.params.id})
-            .then(_ => {
+            .then(_id => {
                 res.redirect(`/restaurants/${mood}`)
             })
        })  
