@@ -61,21 +61,12 @@ router.get('/', (req, res) => {
      
  
    // delete restaurants
-   router.delete('/:id', (req, res) => {
-       let mood
-        Restaurant.find({_id: req.params.id})
-        .then( restaurant => {
-            console.log('the mood=>'+ restaurant.name )
-            console.log('restaurant mood' + restaurant['_id'])
-            console.log('restaurant mood' + restaurant)
+   router.delete('/:_id', (req, res) => {
+    Restaurant.findOneAndRemove({ _id: req.params._id })
+          .then(restaurant => {
             mood = restaurant.mood
-            console.log('the mood=>'+ restaurant.mood )
-            Restaurant.remove({_id: req.params.id})
-       })
-       .then( () => {
             res.redirect(`/restaurants/${mood}`)
-    })
-   })
-   
+          })
+  })
    
    module.exports = router
