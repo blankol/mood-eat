@@ -62,16 +62,19 @@ router.get('/', (req, res) => {
  
    // delete restaurants
    router.delete('/:id', (req, res) => {
+       let mood
         Restaurant.find({_id: req.params.id})
         .then( restaurant => {
+            console.log('the mood=>'+ restaurant.name )
+            console.log('restaurant mood' + restaurant['_id'])
             console.log('restaurant mood' + restaurant)
-            let mood = restaurant.mood
-            console.log('the mood=>'+restaurant)
+            mood = restaurant.mood
+            console.log('the mood=>'+ restaurant.mood )
             Restaurant.remove({_id: req.params.id})
-            .then(_id => {
-                res.redirect(`/restaurants/${mood}`)
-            })
-       })  
+       })
+       .then( () => {
+            res.redirect(`/restaurants/${mood}`)
+    })
    })
    
    
