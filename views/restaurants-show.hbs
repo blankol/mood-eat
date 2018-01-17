@@ -1,7 +1,7 @@
 {{#if restaurants}}
 
 
-<div class="restaurants"
+<div class="restaurants">
   {{!-- {{#each restaurants}} --}}
   {{#each restaurants as |restaurant|}}
     <h3>{{this.name}}</h3>
@@ -23,7 +23,7 @@
     </div>
   {{/each}}
 </div>
- 
+
 {{else}}
 <h2>Nada Here!<br> Add Something!</h2>
 {{/if}}
@@ -36,10 +36,9 @@
         <input type="text" name="restaurant[address.zipcode]" value="" style="display:none">
         <input type="text" name="restaurant[url]" placeholder="Website"><br>
         <input type="submit" class="button" name="" value="Add Restaurant">
-  
+
     <div class="invisible">
         <input type="text" name="restaurant[mood]" value="{{restaurant.mood}}" style="display:none">
     </div>
   </form>
-</div> 
-
+</div>

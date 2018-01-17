@@ -1,4 +1,4 @@
-const mongoose = require('../controllers/restaurants')
+// const mongoose = require('../controllers/restaurants')   // this isn't used in this file
 const Restaurant = require('./schema');
 
 const seedData = require('./seeds.json')
@@ -12,4 +12,3 @@ Restaurant.remove({})
     .then(() => {
         process.exit()
     })
-
