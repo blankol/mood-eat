@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
            console.log(err)
        })
    })
-   
+
    // update restaurants:
    router.put('/:id', (req, res) => {
        Restaurant.findOneAndUpdate({_id: req.params.id}, req.body.restaurant, {new: true})
@@ -58,15 +58,15 @@ router.get('/', (req, res) => {
        })
    })
 
-     
- 
+
+
    // delete restaurants
    router.delete('/:_id', (req, res) => {
     Restaurant.findOneAndRemove({ _id: req.params._id })
           .then(restaurant => {
-            mood = restaurant.mood
+            let mood = restaurant.mood    // I added let, because this is the first time to use this variable
             res.redirect(`/restaurants/${mood}`)
           })
   })
-   
+
    module.exports = router

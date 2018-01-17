@@ -1,13 +1,13 @@
 const express = require('express')
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')     // not needed in this file
 
 const hbs = require('express-handlebars')
 const parser = require('body-parser')
 // const Restaurants = require('./controllers/restaurants')
-const Restaurants = require('./db/schema')
+// const Restaurants = require('./db/schema')     // not needed in this file
 //this library allows us to do push and put requests
 const methodOverride = require('method-override')
-const path = require('path')
+// const path = require('path')       // not used in this file
 const controllers = require('./controllers/restaurants')
 
 const app = express()
@@ -42,4 +42,3 @@ app.use('/restaurants', controllers)
 app.listen(app.get('port'), () => {
   console.log('Listening on 5000')
 })
-
