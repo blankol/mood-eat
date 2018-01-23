@@ -42,4 +42,3 @@ app.use('/restaurants', controllers)
 app.listen(app.get('port'), () => {
   console.log('Listening on 5000')
 })
-
