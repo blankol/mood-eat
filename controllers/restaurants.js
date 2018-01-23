@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose')
 const express  = require('express')
 const Restaurant = require('../db/schema')
@@ -16,11 +15,10 @@ router.get('/', (req, res) => {
   })
 })
 
-
  // get one by name:
  router.get('/:mood', (req, res) => {
      Restaurant.find({mood: req.params.mood})
-     .then((restaurants) => {
+     .then(restaurants => {
          res.render('restaurants-show', {
              restaurants: restaurants,
              // access mood from views
@@ -30,7 +28,7 @@ router.get('/', (req, res) => {
        .catch((err) => {
            console.log(err)
        })
-   })
+ })
    
    // update restaurants:
    router.put('/:id', (req, res) => {
@@ -58,15 +56,11 @@ router.get('/', (req, res) => {
        })
    })
 
-     
- 
    // delete restaurants
-   router.delete('/:_id', (req, res) => {
+router.delete('/:_id', (req, res) => {
     Restaurant.findOneAndRemove({ _id: req.params._id })
-          .then(restaurant => {
+        .then(restaurant => {
             mood = restaurant.mood
             res.redirect(`/restaurants/${mood}`)
-          })
-  })
-   
-   module.exports = router
+        })
+})
