@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-
+const cors = require('cors')
 const hbs = require('express-handlebars')
 const parser = require('body-parser')
 // const Restaurants = require('./controllers/restaurants')
@@ -30,14 +30,15 @@ app.engine('.hbs', hbs({
 app.use(methodOverride('_method'))
 app.use(parser.json()) //handles json post requests
 app.use(parser.urlencoded({ extended: true })) // handles form submissions
+app.use(cors())
 
 
+// app.get('/', (request, response) => {
+//     response.render('restaurants-index')
+// })
 
-app.get('/', (request, response) => {
-    response.render('restaurants-index')
-})
-
-app.use('/restaurants', controllers)
+// app.use('/restaurants', controllers)
+app.use( controllers)
 
 app.listen(app.get('port'), () => {
   console.log('Listening on 5000')

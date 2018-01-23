@@ -29,7 +29,8 @@
 {{/if}}
 
 <div class="restaurants-input">
-      <form name='add' action="/restaurants/{{mood}}" method="post">
+      {{!-- <form name='add' action="/restaurants/{{mood}}" method="post"> --}}
+      <form name='add' action="/restaurants/{{mood}}" method="post"></form>
         <input type="text" name="restaurant[name]" placeholder="Restaurant Name"><br>
         <input type="text" name="restaurant[location]" placeholder="Location"><br>
         <input type="text" name="restaurant[address.street]" value="" style="display:none">
